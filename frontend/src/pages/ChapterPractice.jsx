@@ -170,7 +170,7 @@ export default function ChapterPractice() {
                       <div key={q.question_no} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                         {!q.header_in_image && (
                           <div className="mb-3 flex flex-wrap items-center gap-2">
-                            <span className="flex h-6 min-w-6 items-center justify-center rounded-md bg-blue-600 px-1.5 text-xs font-extrabold text-white">{q.question_no}</span>
+                            <span className="flex h-6 min-w-6 items-center justify-center rounded-md bg-blue-600 px-1.5 text-xs font-extrabold text-white">{q.display_no ?? q.question_no}</span>
                             {q.year && <span className="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 text-[11px] font-bold text-slate-600">{q.year}</span>}
                           </div>
                         )}
