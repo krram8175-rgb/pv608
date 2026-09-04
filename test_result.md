@@ -129,6 +129,18 @@ backend:
         agent: "testing"
         comment: "GET /api/subjects endpoint working correctly. Returns list of subjects with patterns."
 
+  - task: "Chapter banks & images intact after orphan-image cleanup"
+    implemented: true
+    working: "NA"
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Deleted 1436 unreferenced/orphan images from chapter_images (old reexam2026_* RE-NEET set + stray motion_* files). Need to verify existing chapter banks still load and all their images serve, especially neet-physics-units-and-measurements and neet-physics-motion-in-a-straight-line. Verify GET /api/chapter-bank/{key} returns correct question counts (U&M total 64, Motion total 63) and that GET /api/chapter-image/{filename} returns HTTP 200 for a sample of referenced question/option/solution images from both banks. Also verify full papers GET /api/full-paper/reexam-2026 and /api/full-paper/kcet-2026 (180 each) still load with their rn2026_*/kcet2026_* images serving."
+
   - task: "Subject detail endpoint"
     implemented: true
     working: true
