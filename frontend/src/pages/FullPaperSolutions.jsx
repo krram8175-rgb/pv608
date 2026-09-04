@@ -14,6 +14,7 @@ export default function FullPaperSolutions() {
   const [subject, setSubject] = useState(null);
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState({});
+  const [picks, setPicks] = useState({});
   const [zoom, setZoom] = useState(null);
 
   useEffect(() => {
@@ -97,13 +98,16 @@ export default function FullPaperSolutions() {
                 const oimg = q.option_images[L];
                 if (!oimg) return null;
                 const correct = show && q.answer === L;
+                const picked = picks[q.question_no] === L;
                 return (
-                  <div
+                  <button
                     key={L}
-                    className={`block w-full overflow-hidden rounded-2xl ${correct ? "ring-2 ring-emerald-400 ring-offset-1" : ""}`}
+                    type="button"
+                    onClick={() => setPicks((p) => ({ ...p, [q.question_no]: L }))}
+                    className={`block w-full overflow-hidden rounded-2xl transition-all ${correct ? "ring-2 ring-emerald-400 ring-offset-1" : picked ? "ring-2 ring-[#5B50E6] ring-offset-1" : ""}`}
                   >
                     <img src={chapterImageUrl(oimg)} alt={`Option ${L}`} className="block h-auto w-full" loading="lazy" />
-                  </div>
+                  </button>
                 );
               })}
             </div>
