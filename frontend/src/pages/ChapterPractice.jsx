@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getChapterBank, chapterImageUrl } from "@/lib/api";
 import { Header } from "@/components/Header";
-import { Atom, Loader2, CheckCircle2, Eye, ChevronRight, ChevronLeft, Layers } from "lucide-react";
+import { Atom, Loader2, CheckCircle2, Eye, ChevronRight, ChevronLeft, Layers, FileText } from "lucide-react";
 import ImageZoomModal from "@/components/ImageZoomModal";
 
 const LETTERS = ["a", "b", "c", "d"];
 
 export default function ChapterPractice() {
-  const { bankKey } = useParams();
+  const { examId, subjectId, bankKey } = useParams();
+  const navigate = useNavigate();
   const [bank, setBank] = useState(null);
   const [error, setError] = useState(false);
   const [picks, setPicks] = useState({});     // { qno: "a" }
@@ -84,7 +85,19 @@ export default function ChapterPractice() {
 
         {/* Topic list (tap to open) */}
         {!openTopic ? (
-          <div data-testid="topic-list" className="space-y-3">
+          <>
+            {(examId === "neet" || examId === "kcet") && (
+              <button
+                data-testid="chapter-full-paper-btn"
+                onClick={() => navigate(`/exam/${examId}/papers`)}
+                className="group mb-4 flex w-full items-center gap-2.5 rounded-xl bg-[#5B50E6] px-4 py-3.5 shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+              >
+                <FileText className="h-4 w-4 text-indigo-100" />
+                <span className="text-sm font-bold text-white">Full Paper</span>
+                <ChevronRight className="ml-auto h-4 w-4 text-indigo-100 transition-transform group-hover:translate-x-1" />
+              </button>
+            )}
+            <div data-testid="topic-list" className="space-y-3">
             {bank.sections.map((sec, i) => (
               <button
                 key={sec.topic}
@@ -107,7 +120,8 @@ export default function ChapterPractice() {
                 <ChevronRight className="h-5 w-5 shrink-0 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-blue-600" />
               </button>
             ))}
-          </div>
+            </div>
+          </>
         ) : (
           <>
             <div className="space-y-6">

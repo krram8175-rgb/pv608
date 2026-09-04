@@ -328,6 +328,18 @@ frontend:
         agent: "testing"
         comment: "Comprehensive back-button navigation testing completed. All three test scenarios passed: (1) Chapter Practice back flow - navigates from /exam/:examId/:subjectId/practice/:bankKey to /exam/:examId/:subjectId/chapters (class picker) correctly, NO blank screen. (2) Full navigation drill-down and back - tested complete flow Home→NEET→Physics→Class 11→Practice and back navigation at each step, all pages render correctly, NO blank screens. (3) Full Paper solutions back flow - navigates from /exam/:examId/paper/:paperId/solutions to /exam/:examId/papers correctly, NO blank screen. Bug fix verified working in Header.jsx line 15: navigate(`/exam/${examId}/${parts[2]}/chapters`) correctly navigates to class picker without cls parameter."
   
+  - task: "Full Paper button on chapter practice screen"
+    implemented: true
+    working: true
+    file: "/app/frontend/src/pages/ChapterPractice.jsx"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "Comprehensive testing completed for 'Full Paper' button feature. VERIFIED: (1) Chapter practice screen (ChapterPractice.jsx lines 89-99) has purple 'Full Paper' button (data-testid='chapter-full-paper-btn') positioned ABOVE the topic list, only displays for NEET and KCET exams when showing topic list view. (2) Exam dashboard (ExamDashboard.jsx lines 74-83) has 'Full Paper' button (data-testid='exam-full-paper-top') at the TOP, positioned above Exam Info and Analytics pills (Y position 92 vs 156). (3) Both buttons correctly navigate to /exam/neet/papers route. (4) Papers page (ExamPapers.jsx) displays correctly with 37 paper cards, year filters, and proper content. (5) Complete user flow tested: Homepage → NEET card → Exam dashboard (Full Paper button visible) → Physics → Class 11 → Units and Measurements chapter → Chapter practice screen (Full Paper button visible above topics) → Click button → Papers page displays. All navigation flows work correctly. Button styling verified: purple background (bg-[#5B50E6]), proper icons, hover effects. Tested on both 'Motion in a Straight Line' and 'Units and Measurements' chapters successfully."
+  
   - task: "Frontend testing"
     implemented: true
     working: "NA"
@@ -359,3 +371,5 @@ agent_communication:
     message: "Quick verification completed for units-and-measurements chapter bank. Confirmed total_questions=9 with 2 sections (Unit of Physical Quantities: 5 questions, Significant Figures: 4 questions). Significant Figures section fully verified with correct structure: question_no 1-4, answers d/c/d/a, all image fields present (question_image, 4 option_images, solution_image), and header_in_image=true. Chapter image endpoint verified serving sf_q3_question.png correctly (HTTP 200, image/png, 117KB). All requirements met."
   - agent: "testing"
     message: "Back-button navigation bug fix testing completed successfully. Tested three comprehensive scenarios: (1) Main bug - Chapter Practice back flow from /exam/neet/physics/practice/neet-physics-units-and-measurements correctly navigates to class picker at /exam/neet/physics/chapters with visible content, NO blank screen. (2) Full drill-down navigation tested step-by-step: Home→NEET→Physics→Class 11→Practice, then back at each level, all pages render correctly, NO blank screens. (3) Full Paper solutions back flow from /exam/neet/paper/reexam-2026/solutions to /exam/neet/papers works correctly, NO blank screen. The bug fix in Header.jsx (line 15) is working as expected. All navigation flows verified with screenshots showing proper page rendering."
+  - agent: "testing"
+    message: "Full Paper button feature testing completed successfully. VERIFIED IMPLEMENTATION: (1) Chapter practice screen has dedicated purple 'Full Paper' button (data-testid='chapter-full-paper-btn') positioned above topic list, displays only for NEET/KCET when in topic list view. (2) Exam dashboard has 'Full Paper' button (data-testid='exam-full-paper-top') at the TOP, above Exam Info and Analytics (Y:92 vs Y:156). (3) Both buttons navigate correctly to /exam/neet/papers. (4) Papers page displays 37 paper cards with year filters. (5) Complete user flow tested end-to-end: Homepage→NEET→Dashboard (button visible)→Physics→Class 11→Units and Measurements→Chapter practice (button visible above topics)→Papers page. All navigation working. Button styling correct: purple bg-[#5B50E6], proper icons, hover effects. Tested successfully on both 'Motion in a Straight Line' and 'Units and Measurements' chapters. Feature fully functional."
