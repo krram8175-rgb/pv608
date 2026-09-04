@@ -189,6 +189,7 @@ export default function ChapterPractice() {
                           />
                         </button>
 
+                        {q.option_images && Object.keys(q.option_images).length > 0 && (
                         <div className="mt-4">
                           <p className="mb-2 text-[11px] font-bold uppercase tracking-wide text-slate-400">Choose your answer</p>
                           <div className="space-y-2.5">
@@ -214,8 +215,9 @@ export default function ChapterPractice() {
                             })}
                           </div>
                         </div>
+                        )}
 
-                        {!show ? (
+                        {(q.answer || q.solution_image) && (!show ? (
                           <div className="mt-4">
                             <button
                               onClick={() => setRevealed((r) => ({ ...r, [q.question_no]: true }))}
@@ -250,7 +252,7 @@ export default function ChapterPractice() {
                               </button>
                             ) : null}
                           </div>
-                        )}
+                        ))}
                       </div>
                     );
                   }
