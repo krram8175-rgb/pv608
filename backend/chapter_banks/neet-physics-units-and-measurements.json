@@ -16,31 +16,61 @@
           "question_no": 1,
           "year": "RE-NEET 2026",
           "question_image": "uam-fullpaper-q1.png",
-          "header_in_image": true
+          "option_images": {
+            "a": "uam-fullpaper-q1-a.png",
+            "b": "uam-fullpaper-q1-b.png",
+            "c": "uam-fullpaper-q1-c.png",
+            "d": "uam-fullpaper-q1-d.png"
+          },
+          "header_in_image": false
         },
         {
           "question_no": 2,
           "year": "RE-NEET 2026",
           "question_image": "uam-fullpaper-q2.png",
-          "header_in_image": true
+          "option_images": {
+            "a": "uam-fullpaper-q2-a.png",
+            "b": "uam-fullpaper-q2-b.png",
+            "c": "uam-fullpaper-q2-c.png",
+            "d": "uam-fullpaper-q2-d.png"
+          },
+          "header_in_image": false
         },
         {
           "question_no": 3,
           "year": "NEET 2026",
           "question_image": "uam-fullpaper-q3.png",
-          "header_in_image": true
+          "option_images": {
+            "a": "uam-fullpaper-q3-a.png",
+            "b": "uam-fullpaper-q3-b.png",
+            "c": "uam-fullpaper-q3-c.png",
+            "d": "uam-fullpaper-q3-d.png"
+          },
+          "header_in_image": false
         },
         {
           "question_no": 4,
           "year": "NEET 2026",
           "question_image": "uam-fullpaper-q4.png",
-          "header_in_image": true
+          "option_images": {
+            "a": "uam-fullpaper-q4-a.png",
+            "b": "uam-fullpaper-q4-b.png",
+            "c": "uam-fullpaper-q4-c.png",
+            "d": "uam-fullpaper-q4-d.png"
+          },
+          "header_in_image": false
         },
         {
           "question_no": 5,
           "year": "NEET 2026",
           "question_image": "uam-fullpaper-q5.png",
-          "header_in_image": true
+          "option_images": {
+            "a": "uam-fullpaper-q5-a.png",
+            "b": "uam-fullpaper-q5-b.png",
+            "c": "uam-fullpaper-q5-c.png",
+            "d": "uam-fullpaper-q5-d.png"
+          },
+          "header_in_image": false
         }
       ]
     },
