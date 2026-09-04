@@ -15,7 +15,7 @@ const UNLOCKED_PAPERS = new Set(["RE-NEET 2026", "KCET 2026"]);
 const PAPERS_BY_EXAM = {
   neet: [
     { year: 2026, items: [
-      { name: "RE-NEET 2026", date: "21st June 2026 at 2:00 PM", quiz: "reexam-2026", solutions: "reexam-2026" },
+      { name: "RE-NEET 2026", date: "21st June 2026 at 2:00 PM", solutions: "reexam-2026" },
       { name: "NEET 2026", date: "3rd May 2026 at 2:00 PM" },
     ] },
     { year: 2025, items: [{ name: "NEET 2025", date: "4th May 2025 at 2:00 PM" }] },
@@ -73,7 +73,7 @@ const PAPERS_BY_EXAM = {
     { year: 2000, items: [{ name: "AIPMT 2000", date: "7th May 2000 at 3:30 PM" }] },
   ],
   kcet: [
-    { year: 2026, items: [{ name: "KCET 2026", date: "23rd April 2026 at 10:30 AM" }] },
+    { year: 2026, items: [{ name: "KCET 2026", date: "23rd April 2026 at 10:30 AM", solutions: "kcet-2026" }] },
     { year: 2025, items: [{ name: "KCET 2025", date: "16th April 2025 at 10:30 AM" }] },
     { year: 2024, items: [{ name: "KCET 2024", date: "18th April 2024 at 10:30 AM" }] },
     { year: 2023, items: [{ name: "KCET 2023", date: "20th May 2023 at 10:30 AM" }] },
@@ -167,10 +167,10 @@ export default function ExamPapers() {
                         <div className="flex gap-2">
                           <button
                             tabIndex={locked ? -1 : 0}
-                            onClick={() => (locked ? null : p.quiz ? navigate(`/exam/${examId}/quiz/${p.quiz}`) : soon())}
+                            onClick={() => (locked ? null : p.quiz ? navigate(`/exam/${examId}/quiz/${p.quiz}`) : p.solutions ? navigate(`/exam/${examId}/paper/${p.solutions}/solutions`) : soon())}
                             className="flex-1 rounded-lg bg-[#5B50E6] py-2 text-sm font-bold text-white transition-all hover:bg-[#4a41c9]"
                           >
-                            Take Test
+                            {p.quiz ? "Take Test" : "View Questions"}
                           </button>
                           {p.solutions && !locked ? (
                             <button

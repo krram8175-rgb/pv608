@@ -113,7 +113,7 @@ export default function FullPaperSolutions() {
             </div>
           )}
 
-          {!show ? (
+          {(q.answer || q.solution_image) && (!show ? (
             <div className="mt-4">
               <button onClick={() => setRevealed((r) => ({ ...r, [q.question_no]: true }))}
                 className="flex items-center gap-1.5 rounded-lg bg-slate-800 px-3.5 py-2 text-xs font-bold text-white transition-all hover:bg-slate-900">
@@ -138,7 +138,7 @@ export default function FullPaperSolutions() {
                 </button>
               )}
             </div>
-          )}
+          ))}
         </div>
 
         <div className="mt-5 flex items-center justify-between">

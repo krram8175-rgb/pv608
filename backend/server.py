@@ -446,14 +446,15 @@ async def get_chapter_bank(bank_key: str):
 
 # ---------------- Full-paper (with solutions) image banks ----------------
 FULL_PAPERS = {}
-_fp_file = ROOT_DIR / "reexam_solutions.json"
-if _fp_file.exists():
-    try:
-        _fp = _json.loads(_fp_file.read_text())
-        FULL_PAPERS[_fp["id"]] = _fp
-        logger.info(f"Loaded full paper '{_fp['id']}' with {len(_fp['questions'])} questions")
-    except Exception as _e:
-        logger.warning(f"Failed loading full paper: {_e}")
+for _fp_name in ["reexam_solutions.json", "kcet2026_solutions.json"]:
+    _fp_file = ROOT_DIR / _fp_name
+    if _fp_file.exists():
+        try:
+            _fp = _json.loads(_fp_file.read_text())
+            FULL_PAPERS[_fp["id"]] = _fp
+            logger.info(f"Loaded full paper '{_fp['id']}' with {len(_fp['questions'])} questions")
+        except Exception as _e:
+            logger.warning(f"Failed loading full paper {_fp_name}: {_e}")
 
 
 @api_router.get("/full-paper/{paper_id}")
