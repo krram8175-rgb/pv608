@@ -1,0 +1,17 @@
+{
+  "key": "neet-physics-electric-charges-and-fields",
+  "exam": "NEET",
+  "subject": "physics",
+  "cls": "12",
+  "chapter_no": 1,
+  "chapter": "Electric Charges and Fields",
+  "source": "NEET",
+  "mode": "image",
+  "total_questions": 0,
+  "sections": [
+    { "topic": "Electric Charges and Coulomb's Law", "questions": [] },
+    { "topic": "Electric Field and Electric Field Intensity", "questions": [] },
+    { "topic": "Electric Dipole", "questions": [] },
+    { "topic": "Electric Flux and Gauss's Law", "questions": [] }
+  ]
+}
