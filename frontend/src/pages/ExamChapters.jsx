@@ -2,7 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { EXAM_CHAPTERS, SUBJECT_META } from "@/lib/examChapters";
-import { Atom, ChevronRight, GraduationCap, Lock } from "lucide-react";
+import { Atom, ChevronRight, GraduationCap, Lock, FileText } from "lucide-react";
 
 const CLASSES = [
   { key: "11", label: "Class 11", sub: "1st PUC" },
@@ -62,6 +62,17 @@ export default function ExamChapters() {
       <div className="min-h-screen bg-[#F8FAFC]">
         <Header showBack title={`${meta.name} · ${clsMeta.label}`} Icon={Icon} bgClass={meta.bg} />
         <main className="mx-auto max-w-2xl px-4 py-8 md:px-6">
+          {(examId === "neet" || examId === "kcet") && (
+            <button
+              data-testid="chapters-full-paper-btn"
+              onClick={() => navigate(`/exam/${examId}/papers`)}
+              className="group mb-4 flex w-full items-center gap-2.5 rounded-xl bg-[#5B50E6] px-4 py-3.5 shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              <FileText className="h-4 w-4 text-indigo-100" />
+              <span className="text-sm font-bold text-white">Full Paper</span>
+              <ChevronRight className="ml-auto h-4 w-4 text-indigo-100 transition-transform group-hover:translate-x-1" />
+            </button>
+          )}
           <div className="mb-4 flex items-center gap-2">
             <span className={`rounded-lg px-2.5 py-1 text-xs font-extrabold text-white ${meta.bg}`}>{clsMeta.label}</span>
             <span className="ml-auto text-xs font-medium text-slate-400">{chapters.length} chapters</span>
@@ -109,6 +120,17 @@ export default function ExamChapters() {
     <div className="min-h-screen bg-[#F8FAFC]">
       <Header showBack title={meta.name} Icon={Icon} bgClass={meta.bg} />
       <main className="mx-auto max-w-2xl space-y-4 px-4 py-8 md:px-6">
+        {(examId === "neet" || examId === "kcet") && (
+          <button
+            data-testid="class-full-paper-btn"
+            onClick={() => navigate(`/exam/${examId}/papers`)}
+            className="group flex w-full items-center gap-2.5 rounded-xl bg-[#5B50E6] px-4 py-3.5 shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            <FileText className="h-4 w-4 text-indigo-100" />
+            <span className="text-sm font-bold text-white">Full Paper</span>
+            <ChevronRight className="ml-auto h-4 w-4 text-indigo-100 transition-transform group-hover:translate-x-1" />
+          </button>
+        )}
         {CLASSES.map((c) => {
           const count = (data[c.key] || []).length;
           return (
