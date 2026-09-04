@@ -98,16 +98,13 @@ export default function FullPaperSolutions() {
                 if (!oimg) return null;
                 const correct = show && q.answer === L;
                 return (
-                  <button
+                  <div
                     key={L}
-                    type="button"
-                    onClick={() => zoomImg(oimg, `Option ${L.toUpperCase()}`)}
-                    className={`flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left transition-all ${correct ? "border-emerald-300 bg-emerald-50" : "border-slate-200 bg-white hover:border-indigo-200"}`}
-                    title="Tap to zoom"
+                    className={`flex w-full items-center gap-3 rounded-xl border px-3 py-2.5 text-left ${correct ? "border-emerald-300 bg-emerald-50" : "border-slate-200 bg-white"}`}
                   >
                     <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border text-[11px] font-bold uppercase ${correct ? "border-emerald-400 bg-emerald-500 text-white" : "border-slate-300 text-slate-500"}`}>{L}</span>
                     <img src={chapterImageUrl(oimg)} alt={`Option ${L}`} className="block h-auto max-h-24 w-auto max-w-full object-contain md:max-h-28" loading="lazy" />
-                  </button>
+                  </div>
                 );
               })}
             </div>
