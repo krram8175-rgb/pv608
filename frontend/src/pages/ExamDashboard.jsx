@@ -71,17 +71,6 @@ export default function ExamDashboard() {
       <Header showBack title={exam.name} Icon={exam.Icon} bgClass={exam.accent} />
 
       <main className="mx-auto max-w-2xl space-y-4 px-4 py-8 md:px-6">
-        {/* Full Paper — dedicated top button */}
-        <button
-          data-testid="exam-full-paper-top"
-          onClick={() => (examId === "neet" || examId === "kcet" ? navigate(`/exam/${examId}/papers`) : soon("Full Paper"))}
-          className="group flex w-full items-center gap-2.5 rounded-xl bg-[#5B50E6] px-4 py-3.5 shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
-        >
-          <FileText className="h-4 w-4 text-indigo-100" />
-          <span className="text-sm font-bold text-white">Full Paper</span>
-          <ChevronRight className="ml-auto h-4 w-4 text-indigo-100 transition-transform group-hover:translate-x-1" />
-        </button>
-
         {/* Exam Info + Analytics — stacked top pills */}
         <div className="space-y-3">
           <button
@@ -131,6 +120,17 @@ export default function ExamDashboard() {
             </div>
           </div>
         </div>
+
+        {/* Full Paper — bottom pill */}
+        <button
+          data-testid="exam-full-paper-pill"
+          onClick={() => (examId === "neet" || examId === "kcet" ? navigate(`/exam/${examId}/papers`) : soon("Full Paper"))}
+          className="group flex w-full items-center gap-2.5 rounded-xl bg-[#5B50E6] px-4 py-3 shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
+        >
+          <FileText className="h-4 w-4 text-indigo-100" />
+          <span className="text-sm font-bold text-white">Full Paper</span>
+          <ChevronRight className="ml-auto h-4 w-4 text-indigo-100 transition-transform group-hover:translate-x-1" />
+        </button>
       </main>
     </div>
   );
