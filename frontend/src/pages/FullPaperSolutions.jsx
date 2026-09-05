@@ -99,12 +99,13 @@ export default function FullPaperSolutions() {
                 if (!oimg) return null;
                 const correct = show && q.answer === L;
                 const picked = picks[q.question_no] === L;
+                const wrongPick = show && picked && q.answer && q.answer !== L;
                 return (
                   <button
                     key={L}
                     type="button"
                     onClick={() => setPicks((p) => ({ ...p, [q.question_no]: L }))}
-                    className={`block w-full overflow-hidden rounded-2xl transition-all ${correct ? "ring-2 ring-emerald-400 ring-offset-1" : picked ? "ring-2 ring-[#5B50E6] ring-offset-1" : ""}`}
+                    className={`block w-full overflow-hidden rounded-2xl transition-all ${correct ? "ring-2 ring-emerald-500 ring-offset-1" : wrongPick ? "ring-2 ring-rose-500 ring-offset-1" : picked ? "ring-2 ring-[#5B50E6] ring-offset-1" : ""}`}
                   >
                     <img src={chapterImageUrl(oimg)} alt={`Option ${L}`} className="block h-auto w-full" loading="lazy" />
                   </button>
